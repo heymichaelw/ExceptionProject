@@ -8,7 +8,9 @@ public class EmailNotification extends Notification {
         super(subject, body);
         this.recipient = recipient;
         this.smtpProvider = smtpProvider;
+        this.status = "invisible";
     }
+
 
     public String getRecipient() {
         return recipient;
@@ -25,5 +27,26 @@ public class EmailNotification extends Notification {
         System.out.println("Created: " + this.getCreatedAt());
         System.out.println("Subject: " + this.getSubject());
         System.out.println("Body: " + this.getBody());
+    }
+
+    @Override
+    public void printText() {
+        super.printText();
+        System.out.println("This text is from the overridden method");
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    protected EmailNotification clone() throws CloneNotSupportedException {
+        return new EmailNotification(this.getSubject(), this.getBody(), this.getRecipient(), this.getSmtpProvider());
     }
 }
